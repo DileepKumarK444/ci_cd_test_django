@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source .env/bin/activate
-
+sudo /var/lib/jenkins/workspace/django-cicd
 cd /var/lib/jenkins/workspace/django-cicd/app
 
 python3 manage.py makemigrations
