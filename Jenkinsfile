@@ -1,4 +1,4 @@
-pipline{
+pipeline{
     anget any
     stages{
         stage("Python Env Setup"){
