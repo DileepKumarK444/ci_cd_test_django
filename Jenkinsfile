@@ -1,29 +1,28 @@
 pipeline{
-    anget any
-    stages{
-        stage("Python Env Setup"){
-            step{
+    agent any
+    stages {
+    
+        stage('Setup Python Virtual ENV'){
+       
+      steps  {
+            sh '''
+            chmod +x envsetup.sh
+            ./envsetup.sh
+            '''}
+        }
+        stage('Setup Gunicorn Setup'){
+            steps {
                 sh '''
-                    chmod +x envsetup.sh
-                    ./envsetup.sh
+                chmod +x gunicorn.sh
+                ./gunicorn.sh
                 '''
             }
         }
-
-        stage("Setup Gunicorn"){
-            step{
+        stage('setup NGINX'){
+            steps {
                 sh '''
-                    chmod +x gunicorn.sh
-                    ./gunicorn.sh
-                '''
-            }
-        }
-
-        stage("Setup NGINX"){
-            step{
-                sh '''
-                    chmod +x nginx.sh
-                    ./nginx.sh
+                chmod +x nginx.sh
+                ./nginx.sh
                 '''
             }
         }
